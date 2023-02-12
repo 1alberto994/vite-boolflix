@@ -12,19 +12,27 @@ export default{
   },
   methods:{
             fullMovieAndSeries(){
-                let url='https://api.themoviedb.org/3/search/movie';
+               this.makeSearch('movie');
+               this.makeSearch('tv')
+            },
+            makeSearch(enpoint){
+              let url='https://api.themoviedb.org/3/search/';
                 axios
-                    .get(url + 'movie', {
+                    .get(url + enpoint, {
                         params: {
-                            api_key:'adac4cd106eb6249d7ed7d814230e785',
+                            api_key:'e99307154c6dfb0b4750f6603256716d',
                             query:this.store.searchText,
-                            language:'it-IT'
+                            language:'it-IT',
                         
                         }
                     })
                     .then((response) => {
-                        this.store.movies = response.data.results;
-                        
+                        if(enpoint=='movie'){
+                          this.store.movies=response.data.results;
+                        }
+                        else{
+                          this.store.series=response.data.results;
+                        }
                     });
             }
         },

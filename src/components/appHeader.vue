@@ -14,7 +14,8 @@
 
     <header>
 
-        <div v-for="movie in store.movies">
+        <div >
+            <h1>BOOLFLIX</h1>
            <input type="text" placeholder="inserisci un film o una serie tv" v-model=store.searchText >
             <button @click="$emit('search')">
              Search

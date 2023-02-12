@@ -1,11 +1,19 @@
 <script>
     import { store } from '../store.js';
+    import appCard from './appCard.vue'
      export default{
         name:'appMain',
         data(){
             return{
                 store
             }
+        },
+        
+           
+            
+        
+        components:{
+            appCard
         }
      }      
 </script>
@@ -13,13 +21,14 @@
 <template>
 
     <main >
-       <div v-for="movie in store.movies">
-        <h3>{{ movie.title }}</h3>
-        <h4>
-            {{ movie.original_title }}
-        </h4>
-        <h5>{{ movie.original_language }}</h5>
-       </div> 
+        <appCard v-for="movie in store.movies"
+         :movie="movie"
+        />
+        <appCard v-for="singleSeries in store.series"
+         :movie="singleSeries"
+        />
+       
+
     </main>
 
 </template>
